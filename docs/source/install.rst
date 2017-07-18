@@ -13,7 +13,7 @@ SD卡分区与格式化
     # fsl-sdcard-partition.sh为分区脚本
     sudo mkfs.fat -n BOOT /dev/sdX1
     
-关于在执行fsl-sdcard-partition.sh脚本时报错，原因是在高版本Ubuntu中，sfdisk不在支持参数-u,具体可以参见此文（https://community.nxp.com/docs/DOC-331316）中issue-4，修改方式有两种：
+关于在执行fsl-sdcard-partition.sh脚本时报错 sfdisk: unsupported unit 'M' ，原因是在高版本Ubuntu中，sfdisk不在支持参数-u,具体可以参见此文（https://community.nxp.com/docs/DOC-331316）中issue-4，修改方式有两种：
 
 1.使用上文中文末给出的的下载链接，但要修改system分区的大小，至少要大于600M
 
