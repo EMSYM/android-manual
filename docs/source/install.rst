@@ -10,7 +10,8 @@ SD卡分区与格式化
 .. sourcecode:: bash
 
     sudo  ./fsl-sdcard-partition.sh  -f imx6dl /dev/sdX
-    sudo mkfs.fat -n BOOT /dev/sdX1
+    # fsl-sdcard-partition.sh为分区脚本
+    sudo mkfs.fat -n BOOT /dev/sdX1
 
 烧写uboot
 
@@ -22,13 +23,13 @@ SD卡分区与格式化
 
 .. sourcecode:: bash
 
-    cp boot170510.img /media/marui/BOOT/boot.img
+    cp boot.img /media/登录名/BOOT/boot.img
 
 烧写system.img
 
 .. sourcecode:: bash
 
-    sudo dd if=system_raw170510.img of=/dev/sde5;sync
+    sudo dd if=system_raw170510.img of=/dev/sdX5;sync
 
 uboot参数
 
