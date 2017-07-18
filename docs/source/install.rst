@@ -12,6 +12,22 @@ SD卡分区与格式化
     sudo  ./fsl-sdcard-partition.sh  -f imx6dl /dev/sdX
     # fsl-sdcard-partition.sh为分区脚本
     sudo mkfs.fat -n BOOT /dev/sdX1
+    
+关于在执行fsl-sdcard-partition.sh脚本时报错，原因是在高版本Ubuntu中，sfdisk不在支持参数-u,具体可以参见此文（https://community.nxp.com/docs/DOC-331316）中issue-4，修改方式有两种：
+
+1.使用上文中文末给出的的下载链接，但要修改system分区的大小，至少要大于600M
+
+2.直接使用原来的分区脚本，但是要去掉sfdisk的'-uM'参数，并且在每一个分区大小的后边直接加上M，示例如下：
+.. sourcecode:: bash
+    # 去掉 -uM
+    
+    sfdisk --force ${node} -N1 << EOF
+    
+    # 直接在分区大小后边加M指定大小
+    
+    ${BOOTLOAD_RESERVE}M,${BOOT_ROM_SIZE}M,83
+    
+    EOF
 
 烧写uboot
 
